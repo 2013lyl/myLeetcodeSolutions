@@ -1,35 +1,37 @@
 class Solution {
-    public int minimumOperations(int[] nums) {
-        int ans = 0;
+public:
+    int minimumOperations(vector<int>& nums) {
+        int ans=0;
 
         while (sum(nums) != 0) {
             step(nums);
             ans++;
         }
-        
+
         return ans;
     }
 
-    public int sum(int[] nums) {
-        int ans = 0;
-        for (int i=0;i<nums.length;i++) {
-            ans += nums[i];
+    int sum(vector<int>& nums) {
+        int sum = 0;
+        for (int i=0;i<nums.size();i++) {
+            sum += nums[i];
         }
-        return ans;
+        return sum;
     }
 
-    public void step(int[] nums) {
-        int minNumber = 999999;
+    void step(vector<int>& nums) {
+        int minNum = 99999;
 
-        for (int i=0;i<nums.length;i++) {
-            if (nums[i] > 0 &&nums[i] < minNumber) {
-                minNumber = nums[i];
+        for (int i=0;i<nums.size();i++) {
+            if (nums[i] > 0 && nums[i] < minNum) {
+                minNum = nums[i];
             }
         }
-        for (int i=0;i<nums.length;i++) {
+
+        for (int i=0;i<nums.size();i++) {
             if (nums[i] > 0) {
-                nums[i] -= minNumber;
+                nums[i] -= minNum;
             }
         }
     }
-}
+};
